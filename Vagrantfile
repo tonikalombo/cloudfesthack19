@@ -18,7 +18,12 @@ Vagrant.configure("2") do |config|
   for i in 8000..8010
     config.vm.network :forwarded_port, guest: i, host: i
   end
+  
+  config.vm.host_name = "vagrant-template"
+  config.vm.network "public_network"
 
+  #config.vm.synced_folder "./src", "/home/vagrant/src",  :owner => "www-data", :group => "www-data", :mount_options => ['dmode=775', 'fmode=664']
+  
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
