@@ -8,27 +8,31 @@ sudo apt-get install 			\
 	python3-dev 				\
 	python3-pip  				\
 	git 						\
-	unixodbc-dev 				\
-	unixodbc-bin                \
 	curl						\
 	apt-transport-https 		\
 	ca-certificates 			\
 	software-properties-common 	-q -y
 
 #install apache
-sudo apt-get install 			\
-	apache2 					\
-	apache2-dev					\
-	libapache2-mod-wsgi-py3	-q -y
+#sudo apt-get install 			\
+#	apache2 					\
+#	apache2-dev					\
+#	libapache2-mod-wsgi-py3	-q -y
+#pip3 install mod_wsgi
+
+
+#install pyodbc
+#sudo apt-get install 			\
+#	unixodbc-dev 				\
+#	unixodbc-bin -q -y               
+#sudo pip3 install pyodbc
 
 #install pip packages
-sudo pip3 install pyodbc
 pip3 install requests
 pip3 install django
 pip3 install djangorestframework
 sudo pip3 install virtualenv
 pip3 install statsd
-pip3 install mod_wsgi
 
 #install docker on Ubuntu
 if [ "$(lsb_release -is)" == "Ubuntu" ] ; then
@@ -42,7 +46,10 @@ if [ "$(lsb_release -is)" == "Ubuntu" ] ; then
 	sudo apt update
 	apt-cache policy docker-ce
 	yes | sudo apt install docker-ce
-
+	#check that docker is installed successfully	
+	#sudo systemctl status docker
+	sudo docker run hello-world   
+	sudo pip3 install docker-compose
 #install docker on Raspbian	
 elif [ "$(lsb_release -is)" == "Raspbian" ]; then
 #installing docker on raspberry-pi 
@@ -64,10 +71,6 @@ elif [ "$(lsb_release -is)" == "Raspbian" ]; then
 ####raspberry-pi##########
 fi
 
-#check that docker is installed successfully	
-#sudo systemctl status docker
-sudo docker run hello-world   
-sudo pip3 install docker-compose
 
 #install nodejs
 yes | curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
