@@ -19,9 +19,9 @@ Vagrant.configure("2") do |config|
   #  config.vm.network :forwarded_port, guest: i, host: i
   #end
   
-  config.vm.host_name = "vagrant-template"
-  #config.vm.network "public_network"
-  config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.host_name = "domain-connect"
+  config.vm.network "public_network"
+  #config.vm.network "private_network", ip: "192.168.33.10"
 
   #config.vm.synced_folder "./src", "/home/vagrant/src",  :owner => "www-data", :group => "www-data", :mount_options => ['dmode=775', 'fmode=664']
   
