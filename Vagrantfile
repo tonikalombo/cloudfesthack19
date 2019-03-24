@@ -18,10 +18,12 @@ Vagrant.configure("2") do |config|
 
   forward_port[3306]     
   forward_port[80, 48080] 
+  forward_port[8081] 
   forward_port[53, 53, 'udp']
   forward_port[53, 53, 'tcp']
 
   config.vm.network :private_network, ip: "33.33.33.10"
+  #config.vm.network "public_network"
 
-  config.vm.provision "shell", path: "install.sh"
+  #config.vm.provision "shell", path: "install.sh"
 end
